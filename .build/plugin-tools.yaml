@@ -1,0 +1,164 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "DivisasLat-x86_64-unknown-linux-gnu-debug.module": ["<DivisasLat-x86_64-unknown-linux-gnu-debug.module>"]
+  "DivisasLatTests-x86_64-unknown-linux-gnu-debug.module": ["<DivisasLatTests-x86_64-unknown-linux-gnu-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "divisas-swift-sdkPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module": ["<divisas-swift-sdkPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module>"]
+  "divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.module": ["<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.module>"]
+  "divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.test": ["<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.test>"]
+  "main": ["<DivisasLat-x86_64-unknown-linux-gnu-debug.module>"]
+  "test": ["<DivisasLat-x86_64-unknown-linux-gnu-debug.module>","<DivisasLatTests-x86_64-unknown-linux-gnu-debug.module>","<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.test>"]
+default: "main"
+nodes:
+  "/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/home/rodmar/Projects/divisas-swift-sdk/Tests/DivisasLatTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasLat.swiftmodule.o":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLat.swiftmodule"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasLat.swiftmodule.o"]
+    description: "Wrapping AST for DivisasLat for debugging"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-modulewrap","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLat.swiftmodule","-o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasLat.swiftmodule.o","-target","x86_64-unknown-linux-gnu"]
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Cache.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/DivisasClient.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Enums.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Models.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/QueryBuilder.swift"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/sources"]
+    description: "Write auxiliary file /home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/sources"
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swiftmodule.o":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swiftmodule.o"]
+    description: "Wrapping AST for DivisasLatTests for debugging"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-modulewrap","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule","-o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swiftmodule.o","-target","x86_64-unknown-linux-gnu"]
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/home/rodmar/Projects/divisas-swift-sdk/Tests/DivisasLatTests/DivisasLatTests.swift"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/sources"]
+    description: "Write auxiliary file /home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/sources"
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/all-discovered-tests.swift":
+    tool: test-discovery-tool
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swift.o"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/DivisasLatTests.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/all-discovered-tests.swift"]
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.derived/runner.swift":
+    tool: test-entry-point-tool
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.derived/runner.swift"]
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasLat.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/all-discovered-tests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/divisas_swift_sdkPackageDiscoveredTests.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/divisas_swift_sdkPackageTests.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/runner.swift.o"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.product/Objects.LinkFileList"
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/divisas_swift_sdkPackageDiscoveredTests.swiftmodule.o":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/divisas_swift_sdkPackageDiscoveredTests.swiftmodule.o"]
+    description: "Wrapping AST for divisas-swift-sdkPackageDiscoveredTests for debugging"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-modulewrap","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule","-o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/divisas_swift_sdkPackageDiscoveredTests.swiftmodule.o","-target","x86_64-unknown-linux-gnu"]
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/DivisasLatTests.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/all-discovered-tests.swift"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/sources"]
+    description: "Write auxiliary file /home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/sources"
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/divisas_swift_sdkPackageTests.swiftmodule.o":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageTests.swiftmodule"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/divisas_swift_sdkPackageTests.swiftmodule.o"]
+    description: "Wrapping AST for divisas-swift-sdkPackageTests for debugging"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-modulewrap","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageTests.swiftmodule","-o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/divisas_swift_sdkPackageTests.swiftmodule.o","-target","x86_64-unknown-linux-gnu"]
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.derived/runner.swift"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/sources"]
+    description: "Write auxiliary file /home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/sources"
+
+  "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/usr/libexec/swift/6.2/bin/swiftc"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt"
+
+  "<DivisasLat-x86_64-unknown-linux-gnu-debug.module>":
+    tool: phony
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLat.swiftmodule"]
+    outputs: ["<DivisasLat-x86_64-unknown-linux-gnu-debug.module>"]
+
+  "<DivisasLatTests-x86_64-unknown-linux-gnu-debug.module>":
+    tool: phony
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule"]
+    outputs: ["<DivisasLatTests-x86_64-unknown-linux-gnu-debug.module>"]
+
+  "<divisas-swift-sdkPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module>":
+    tool: phony
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/all-discovered-tests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule"]
+    outputs: ["<divisas-swift-sdkPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module>"]
+
+  "<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.module>":
+    tool: phony
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/runner.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageTests.swiftmodule"]
+    outputs: ["<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.module>"]
+
+  "<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.test>":
+    tool: phony
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.xctest"]
+    outputs: ["<divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.test>"]
+
+  "C.DivisasLat-x86_64-unknown-linux-gnu-debug.module":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Cache.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/DivisasClient.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Enums.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Models.swift","/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/QueryBuilder.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/sources"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLat.swiftmodule"]
+    description: "Compiling Swift Module 'DivisasLat' (5 sources)"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-module-name","DivisasLat","-emit-dependencies","-emit-module","-emit-module-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLat.swiftmodule","-output-file-map","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/output-file-map.json","-parse-as-library","-incremental","-c","@/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/sources","-I","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules","-target","x86_64-unknown-linux-gnu","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/index/store","-Onone","-enable-testing","-j12","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/include/DivisasLat-Swift.h","-swift-version","5","-g","-Xcc","-fPIC","-Xcc","-g","-package-name","divisas_swift_sdk","-Xcc","-fno-omit-frame-pointer"]
+
+  "C.DivisasLatTests-x86_64-unknown-linux-gnu-debug.module":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/Tests/DivisasLatTests/DivisasLatTests.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLat.swiftmodule","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/sources"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule"]
+    description: "Compiling Swift Module 'DivisasLatTests' (1 sources)"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-module-name","DivisasLatTests","-emit-dependencies","-emit-module","-emit-module-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule","-output-file-map","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/sources","-I","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules","-target","x86_64-unknown-linux-gnu","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j12","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-parseable-output","-parse-as-library","-swift-version","5","-g","-Xcc","-fPIC","-Xcc","-g","-package-name","divisas_swift_sdk","-Xcc","-fno-omit-frame-pointer"]
+
+  "C.divisas-swift-sdkPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/DivisasLatTests.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageDiscoveredTests.derived/all-discovered-tests.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/sources"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/all-discovered-tests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule"]
+    description: "Compiling Swift Module 'divisas_swift_sdkPackageDiscoveredTests' (2 sources)"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-module-name","divisas_swift_sdkPackageDiscoveredTests","-emit-dependencies","-emit-module","-emit-module-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule","-output-file-map","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/sources","-I","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules","-target","x86_64-unknown-linux-gnu","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j12","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/include/divisas-swift-sdkPackageDiscoveredTests-Swift.h","-g","-Xcc","-fPIC","-Xcc","-g","-package-name","divisas_swift_sdk","-Xcc","-fno-omit-frame-pointer"]
+
+  "C.divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.module":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.derived/runner.swift","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/swift-version-A88259DAF186EF7.txt","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/DivisasLatTests.swiftmodule","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageDiscoveredTests.swiftmodule","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/sources"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/runner.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'divisas_swift_sdkPackageTests' (1 sources)"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-module-name","divisas_swift_sdkPackageTests","-emit-dependencies","-emit-module","-emit-module-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules/divisas_swift_sdkPackageTests.swiftmodule","-output-file-map","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/sources","-I","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/Modules","-target","x86_64-unknown-linux-gnu","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j12","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/include/divisas-swift-sdkPackageTests-Swift.h","-g","-Xcc","-fPIC","-Xcc","-g","-package-name","divisas_swift_sdk","-Xcc","-fno-omit-frame-pointer"]
+
+  "C.divisas-swift-sdkPackageTests-x86_64-unknown-linux-gnu-debug.test":
+    tool: shell
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasLat.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLatTests.build/DivisasLatTests.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/DivisasLatTests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/all-discovered-tests.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageDiscoveredTests.build/divisas_swift_sdkPackageDiscoveredTests.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/divisas_swift_sdkPackageTests.swiftmodule.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas_swift_sdkPackageTests.build/runner.swift.o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.product/Objects.LinkFileList"]
+    outputs: ["/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.xctest"]
+    description: "Linking ./.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.xctest"
+    args: ["/usr/libexec/swift/6.2/bin/swiftc","-L","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug","-o","/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.xctest","-module-name","divisas_swift_sdkPackageTests","-emit-executable","-Xlinker","-rpath=$ORIGIN","@/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/divisas-swift-sdkPackageTests.product/Objects.LinkFileList","-target","x86_64-unknown-linux-gnu","-g"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/","/home/rodmar/Projects/divisas-swift-sdk/Tests/DivisasLatTests/","/home/rodmar/Projects/divisas-swift-sdk/Package.swift","/home/rodmar/Projects/divisas-swift-sdk/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

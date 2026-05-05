@@ -1,0 +1,40 @@
+{
+  "": {
+    "swift-dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/master.swiftdeps"
+  },
+  "/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Cache.swift": {
+    "dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.d",
+    "object": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.swift.o",
+    "swiftmodule": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache~partial.swiftmodule",
+    "swift-dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.swiftdeps",
+    "diagnostics": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Cache.dia"
+  },
+  "/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/DivisasClient.swift": {
+    "dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.d",
+    "object": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.swift.o",
+    "swiftmodule": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient~partial.swiftmodule",
+    "swift-dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.swiftdeps",
+    "diagnostics": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/DivisasClient.dia"
+  },
+  "/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Enums.swift": {
+    "dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.d",
+    "object": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.swift.o",
+    "swiftmodule": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums~partial.swiftmodule",
+    "swift-dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.swiftdeps",
+    "diagnostics": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Enums.dia"
+  },
+  "/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/Models.swift": {
+    "dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.d",
+    "object": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.swift.o",
+    "swiftmodule": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models~partial.swiftmodule",
+    "swift-dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.swiftdeps",
+    "diagnostics": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/Models.dia"
+  },
+  "/home/rodmar/Projects/divisas-swift-sdk/Sources/DivisasLat/QueryBuilder.swift": {
+    "dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.d",
+    "object": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.swift.o",
+    "swiftmodule": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder~partial.swiftmodule",
+    "swift-dependencies": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.swiftdeps",
+    "diagnostics": "/home/rodmar/Projects/divisas-swift-sdk/.build/x86_64-unknown-linux-gnu/debug/DivisasLat.build/QueryBuilder.dia"
+  }
+}
